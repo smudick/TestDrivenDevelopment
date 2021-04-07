@@ -48,5 +48,6 @@ namespace BadSuperbowlNamer.Tests
             //Assert
             Assert.Equal(expectedResult, result);
         }
+
     }
 }

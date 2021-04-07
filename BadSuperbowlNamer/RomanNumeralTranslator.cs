@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace BadSuperbowlNamer
@@ -10,28 +11,59 @@ namespace BadSuperbowlNamer
         {
             //throw new NotImplementedException(); // for when you just want to have a non-functioning method
 
-            //var result = "";
+            var result = "";
 
-            var result = numberToConvert switch // switch expression
-            {
-                1 => "I",
-                5 => "V",
-                9 => "IX"
-            };
-
-            //switch (numberToConvert)
+            //var result = numberToConvert switch // switch expression
             //{
-            //    case 1: 
-            //    result += "I";
-            //        break;
-            //    case 5:
-            //        result += "V";
-            //        break;
-            //    case 9:
-            //        result += "IX";
-            //        break;
-            //}
-           
+            //    1 => "I",
+            //    5 => "V",
+            //    9 => "IX"
+            //};
+
+            while (numberToConvert > 0)
+            {
+                if (numberToConvert >= 100)
+                {
+                    result += "C";
+                    numberToConvert -= 100;
+                }
+                else if (numberToConvert >= 50)
+                {
+                    result += "L";
+                    numberToConvert -= 50;
+                }
+                else if (numberToConvert >= 40)
+                {
+                    result += "XL";
+                    numberToConvert -= 40;
+                }
+                else if (numberToConvert >= 10)
+                {
+                    result += "X";
+                    numberToConvert -= 10;
+                }
+                else if (numberToConvert == 9)
+                {
+                    result += "IX";
+                    numberToConvert = 0;
+                }
+                 else if (numberToConvert >= 5)
+                {
+                    result += "V";
+                    numberToConvert -= 5;
+                }
+                else if (numberToConvert == 4)
+                {
+                    result += "IV";
+                    numberToConvert = 0;
+                }
+                else if (numberToConvert <=3)
+                {
+                    result += new string('I', numberToConvert);
+                    numberToConvert = 0;
+                }
+            }
+
             return result;
         }
     }
